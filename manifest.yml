@@ -1,0 +1,43 @@
+name: DecoTV
+package: community.lazycat.app.decotv
+version: 0.2.0
+min_os_version: 1.3.8
+description: DecoTV 是一个开箱即用的、跨平台的影视聚合播放器。
+homepage: https://github.com/Decohererk/DecoTV
+author: Decohererk
+application:
+  subdomain: decotv
+  background_task: true
+
+  upstreams:
+    - location: /
+      backend: http://decotv:3000/
+
+services:
+  decotv:
+    container_name: decotv
+    #  ghcr.io/decohererk/decotv:latest
+    image: registry.lazycat.cloud/czyt/decohererk/decotv:86ae46d87646a679
+    environment:
+      - USERNAME={{ .U.admin_username }}
+      - PASSWORD={{ .U.admin_password }}
+      - NEXT_PUBLIC_STORAGE_TYPE=kvrocks
+      - KVROCKS_URL=redis://decotv-kvrocks:6666
+    depends_on:
+      - decotv-kvrocks
+
+  decotv-kvrocks:
+    # apache/kvrocks
+    image: registry.lazycat.cloud/czyt/apache/kvrocks:2821d3ee858b63a9
+    container_name: decotv-kvrocks
+    restart: unless-stopped
+    volumes:
+      - /lzcapp/var/kvrocks:/var/lib/kvrocks
+
+locales:
+  zh:
+    name: "DecoTV"
+    description: "DecoTV 是一个开箱即用的、跨平台的影视聚合播放器。"
+  en:
+    name: "DecoTV"
+    description: "DecoTV is a cross-platform media player that aggregates movies and TV shows."
