@@ -1,6 +1,6 @@
 name: DecoTV
 package: community.lazycat.app.decotv
-version: 0.2.0
+version: 0.3.0
 min_os_version: 1.3.8
 description: DecoTV 是一个开箱即用的、跨平台的影视聚合播放器。
 homepage: https://github.com/Decohererk/DecoTV
@@ -17,7 +17,7 @@ services:
   decotv:
     container_name: decotv
     #  ghcr.io/decohererk/decotv:latest
-    image: registry.lazycat.cloud/czyt/decohererk/decotv:86ae46d87646a679
+    image: registry.lazycat.cloud/czyt/decohererk/decotv:09d15f79865fcac7
     environment:
       - USERNAME={{ .U.admin_username }}
       - PASSWORD={{ .U.admin_password }}
