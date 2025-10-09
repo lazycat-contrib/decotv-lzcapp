@@ -31,8 +31,10 @@ services:
     image: registry.lazycat.cloud/czyt/apache/kvrocks:2821d3ee858b63a9
     container_name: decotv-kvrocks
     restart: unless-stopped
+    user: root
     binds:
-      - /lzcapp/var/kvrocks:/var/lib/kvrocks
+      - /lzcapp/var/data:/var/lib/kvrocks/data
+    entrypoint: kvrocks -c /var/lib/kvrocks/kvrocks.conf --dir /var/lib/kvrocks/data --pidfile /var/run/kvrocks/kvrocks.pid --bind 0.0.0.0
 
 locales:
   zh:
