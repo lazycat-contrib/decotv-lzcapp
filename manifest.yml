@@ -31,7 +31,7 @@ services:
     image: registry.lazycat.cloud/czyt/apache/kvrocks:2821d3ee858b63a9
     container_name: decotv-kvrocks
     restart: unless-stopped
-    volumes:
+    binds:
       - /lzcapp/var/kvrocks:/var/lib/kvrocks
 
 locales:
