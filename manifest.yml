@@ -8,6 +8,8 @@ author: Decohererk
 application:
   subdomain: decotv
   background_task: true
+  public_path:
+    - /
 
   upstreams:
     - location: /
