@@ -1,0 +1,40 @@
+version: 1
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: dist/decotv.lpk
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: decotv
+build:
+  run_buildscript: false
+images:
+  - id: decotv
+    target: service
+    service: decotv
+    source: ghcr.io/decohererk/decotv
+    channel: stable
+    tag_regex: '^v?[0-9]+\.[0-9]+\.[0-9]+$'
+    delivery:
+      mode: lazycat
+  - id: kvrocks
+    target: service
+    service: decotv-kvrocks
+    source: apache/kvrocks
+    channel: stable
+    tag_regex: '^v?[0-9]+\.[0-9]+\.[0-9]+$'
+    delivery:
+      mode: lazycat
+stores:
+  official:
+    enabled: true
+    skip_if_version_exists: true
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: DecoTV
+    summary: 开箱即用、跨平台的影视聚合播放器

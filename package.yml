@@ -1,0 +1,17 @@
+package: community.lazycat.app.decotv
+version: 1.1.0
+name: DecoTV
+description: "DecoTV 是一个开箱即用、跨平台的影视聚合播放器。"
+min_os_version: 1.5.0
+homepage: https://github.com/Decohererk/DecoTV
+author: Decohererk
+locales:
+  zh:
+    name: "DecoTV"
+    description: "DecoTV 是一个开箱即用、跨平台的影视聚合播放器。"
+  en:
+    name: "DecoTV"
+    description: "DecoTV is a cross-platform media player that aggregates movies and TV shows."
+permissions:
+  required:
+    - net.internet
