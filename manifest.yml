@@ -3,15 +3,14 @@ application:
   background_task: true
   public_path:
     - /
-
   upstreams:
     - location: /
       backend: http://decotv:3000/
-
 services:
   decotv:
     #   ghcr.io/decohererk/decotv:v1.1.0
-    image: registry.lazycat.cloud/czyt/decohererk/decotv:474f407f5165d32a
+    # upstream: ghcr.io/decohererk/decotv:v1.5.0
+    image: registry.lazycat.cloud/czyt/decohererk/decotv:7ad605a55815002b
     environment:
       - USERNAME={{ .U.admin_username }}
       - PASSWORD={{ .U.admin_password }}
@@ -19,10 +18,10 @@ services:
       - KVROCKS_URL=redis://decotv-kvrocks:6666
     depends_on:
       - decotv-kvrocks
-
   decotv-kvrocks:
     # apache/kvrocks
-    image: registry.lazycat.cloud/czyt/apache/kvrocks:2821d3ee858b63a9
+    # upstream: apache/kvrocks:2.16.0
+    image: registry.lazycat.cloud/czyt/apache/kvrocks:35c1bce7ef8b9505
     user: root
     binds:
       - /lzcapp/var/data:/var/lib/kvrocks/data
