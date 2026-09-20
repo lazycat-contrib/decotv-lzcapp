@@ -20,8 +20,8 @@ services:
       - decotv-kvrocks
   decotv-kvrocks:
     # apache/kvrocks
-    # upstream: apache/kvrocks:2.16.0
-    image: registry.lazycat.cloud/czyt/apache/kvrocks:35c1bce7ef8b9505
+    # upstream: apache/kvrocks:2.17.0
+    image: registry.lazycat.cloud/czyt/apache/kvrocks:20902f1e14ed74c7
     user: root
     binds:
       - /lzcapp/var/data:/var/lib/kvrocks/data
